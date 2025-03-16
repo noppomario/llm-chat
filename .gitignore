@@ -39,3 +39,6 @@ config/__init__.py
 
 # カスタムプロンプト（センシティブな情報を含む）
 templates/prompts/custom/*.txt
+
+# プロンプトのバックアップ
+templates/prompts/backups/*/*.txt

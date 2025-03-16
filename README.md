@@ -9,6 +9,7 @@ StreamlitベースのLLMチャットボットアプリケーションです。�
 * 🤖 自動会話機能
   * 1回自動：ボタンクリックで1回の自動会話
   * 連続自動：設定した間隔で自動的に会話を継続
+* 📝 プロンプトテンプレート編集機能
 * 🌐 Streamlitベースのウェブインターフェース
 
 ## プロジェクト構造
@@ -17,14 +18,19 @@ StreamlitベースのLLMチャットボットアプリケーションです。�
 .
 ├── app/                    # アプリケーションパッケージ
 │   ├── __init__.py        # パッケージ初期化
-│   ├── streamlit_app.py   # Streamlitアプリケーション
-│   └── main.py           # コアロジック
-├── config/                # 設定パッケージ
+│   ├── chat_app.py        # チャットアプリケーションのメイン機能
+│   ├── main.py            # コアロジック
+│   ├── paths.py           # パス管理
+│   ├── prompt_template_editor.py    # テンプレート編集UI
+│   ├── prompt_template_manager.py   # テンプレート管理機能
+│   └── pages/             # Streamlitのマルチページ機能
+│       └── 1_prompt_template_settings.py  # テンプレート設定ページ
+├── config/                 # 設定パッケージ
 │   └── config.example.py  # 設定ファイルのテンプレート
-└── templates/            # テンプレートファイル
-    └── prompts/          # プロンプトテンプレート
-        ├── normal/       # 通常モード用（サンプルとして参照）
-        └── custom/       # カスタムモード用
+└── templates/              # テンプレートファイル
+    └── prompts/            # プロンプトテンプレート
+        ├── normal/         # 通常モード用（サンプルとして参照）
+        └── custom/         # カスタムモード用
 ```
 
 ## 必要要件
@@ -142,7 +148,7 @@ MODES = {
 1. アプリケーションを起動：
 
 ```bash
-streamlit run app/streamlit_app.py
+streamlit run app/chat_app.py
 ```
 
 2. ブラウザで`http://localhost:8501`を開きます

@@ -13,7 +13,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import YOU, BOT, CURRENT_MODE, MODES
 from main import LLMAPI, LLMAPIError
 
-class StreamlitChatGUI:
+class ChatApplication:
     """
     StreamlitベースのチャットUIを管理するクラス。
     セッション状態、モード切り替え、自動会話機能を提供します。
@@ -21,7 +21,7 @@ class StreamlitChatGUI:
 
     def __init__(self):
         """
-        StreamlitChatGUIのコンストラクタ。
+        ChatApplicationのコンストラクタ。
         セッション状態を初期化し、UIの基本設定を行います。
         """
         try:
@@ -37,10 +37,17 @@ class StreamlitChatGUI:
         Streamlitのセッション状態を初期化します。
         メッセージ履歴、自動会話設定、現在のモードを管理します。
         """
+        # メッセージ関連
         if 'messages' not in st.session_state:
             st.session_state.messages = []
+        if 'previous_messages' not in st.session_state:
+            st.session_state.previous_messages = []
+        
+        # 設定関連
         if 'auto_conversation' not in st.session_state:
             st.session_state.auto_conversation = False
+        if 'auto_interval' not in st.session_state:
+            st.session_state.auto_interval = 5
         if 'current_mode' not in st.session_state:
             st.session_state.current_mode = CURRENT_MODE
 
@@ -50,11 +57,16 @@ class StreamlitChatGUI:
         タイトル、アイコン、レイアウトを設定します。
         """
         st.set_page_config(
-            page_title=f"チャットアプリケーション - {self.get_mode_text()}",
+            page_title=f"AIチャット - {self.get_mode_text()}",
             page_icon="💭",
-            layout="wide"
+            layout="wide",
+            menu_items={
+                'Get Help': None,
+                'Report a bug': None,
+                'About': "AIチャット"
+            }
         )
-        st.title("チャットアプリケーション")
+        st.title("AIチャット")
 
     def get_mode_text(self):
         """
@@ -70,7 +82,7 @@ class StreamlitChatGUI:
         モード選択UIを描画します。
         モードが変更された場合、LLMAPIインスタンスを再初期化します。
         """
-        mode = st.sidebar.selectbox(
+        mode = st.selectbox(
             "モード選択",
             list(MODES.keys()),
             format_func=lambda x: MODES[x]['display_name'],
@@ -92,22 +104,20 @@ class StreamlitChatGUI:
         自動会話コントロールUIを描画します。
         1回自動ボタンと連続自動トグル、インターバル設定を提供します。
         """
-        st.sidebar.markdown("### 自動会話設定")
-        
         # 1回自動ボタン
-        if st.sidebar.button("1回自動", key="single_auto"):
+        if st.button("1回自動", key="single_auto"):
             try:
                 self.auto_conversation_once()
             except Exception as e:
                 st.error(f"自動会話エラー: {e}")
         
         # 連続自動トグル
-        auto_running = st.sidebar.toggle("連続自動", value=st.session_state.auto_conversation)
+        auto_running = st.toggle("連続自動", value=st.session_state.auto_conversation)
         
         if auto_running != st.session_state.auto_conversation:
             st.session_state.auto_conversation = auto_running
             if auto_running:
-                st.session_state.auto_interval = st.sidebar.slider(
+                st.session_state.auto_interval = st.slider(
                     "インターバル（秒）",
                     min_value=1,
                     max_value=10,
@@ -205,14 +215,18 @@ class StreamlitChatGUI:
     def run(self):
         """
         アプリケーションのメイン実行メソッド。
-        サイドバーとチャットインターフェースを描画します。
+        サイドバーとメインインターフェースを描画します。
         """
         try:
             # サイドバーの設定
-            self.render_mode_selector()
-            self.render_auto_conversation_controls()
+            with st.sidebar:
+                st.markdown("### 基本設定")
+                self.render_mode_selector()
+                
+                st.markdown("### 自動会話設定")
+                self.render_auto_conversation_controls()
             
-            # メインコンテンツ
+            # メインコンテンツ（チャットインターフェース）
             self.render_chat_interface()
         except Exception as e:
             st.error(f"アプリケーションエラー: {e}")
@@ -220,10 +234,10 @@ class StreamlitChatGUI:
 def main():
     """
     アプリケーションのエントリーポイント。
-    StreamlitChatGUIインスタンスを作成し実行します。
+    ChatApplicationインスタンスを作成し実行します。
     """
     try:
-        app = StreamlitChatGUI()
+        app = ChatApplication()
         app.run()
     except Exception as e:
         st.error(f"クリティカルエラー: {e}")
