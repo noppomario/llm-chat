@@ -3,6 +3,8 @@
 StreamlitベースのLLMチャットボットアプリケーションです。
 カスタマイズ可能なプロンプトテンプレートと自動会話機能を備えています。
 
+[LLM Chat Documentation](https://noppomario.github.io/llm-chat/)
+
 ## 機能
 
 - 💬 LLM APIを使用したチャット機能
