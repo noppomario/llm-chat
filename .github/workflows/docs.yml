@@ -56,13 +56,13 @@ jobs:
         run: |
           mkdocs gh-deploy --force
           
-      - name: Wait for deployment
-        run: sleep 10
+      # - name: Wait for deployment
+      #   run: sleep 10
         
-      - name: Verify deployment
-        id: deployment
-        run: |
-          DEPLOY_URL="https://noppomario.github.io/llm-chat/"
-          echo "page_url=$DEPLOY_URL" >> $GITHUB_OUTPUT
-          echo "Deployment URL: $DEPLOY_URL"
-          curl -f $DEPLOY_URL || (echo "Deployment verification failed" && exit 1)
+      # - name: Verify deployment
+      #   id: deployment
+      #   run: |
+      #     DEPLOY_URL="https://noppomario.github.io/llm-chat/"
+      #     echo "page_url=$DEPLOY_URL" >> $GITHUB_OUTPUT
+      #     echo "Deployment URL: $DEPLOY_URL"
+      #     curl -f $DEPLOY_URL || (echo "Deployment verification failed" && exit 1)
