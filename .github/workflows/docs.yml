@@ -8,16 +8,29 @@ on:
     branches:
       - main
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+# Cancel any previous running workflows
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  deploy:
+  cleanup-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+        with:
+          fetch-depth: 0
+          
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -27,7 +40,29 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements-docs.txt
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          
+      - name: Remove existing gh-pages branch locally
+        run: |
+          git branch -D gh-pages || true
+          git push origin --delete gh-pages || true
+        continue-on-error: true
           
       - name: Build and deploy
         run: |
           mkdocs gh-deploy --force
+          
+      - name: Wait for deployment
+        run: sleep 10
+        
+      - name: Verify deployment
+        id: deployment
+        run: |
+          DEPLOY_URL="https://noppomario.github.io/llm-chat/"
+          echo "page_url=$DEPLOY_URL" >> $GITHUB_OUTPUT
+          echo "Deployment URL: $DEPLOY_URL"
+          curl -f $DEPLOY_URL || (echo "Deployment verification failed" && exit 1)
