@@ -23,7 +23,7 @@ jobs:
   cleanup-and-deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://noppomario.github.io/llm-chat/
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -46,23 +46,17 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           
-      - name: Remove existing gh-pages branch locally
-        run: |
-          git branch -D gh-pages || true
-          git push origin --delete gh-pages || true
-        continue-on-error: true
-          
       - name: Build and deploy
         run: |
           mkdocs gh-deploy --force
           
-      # - name: Wait for deployment
-      #   run: sleep 10
+      - name: Wait for deployment
+        run: sleep 30
         
-      # - name: Verify deployment
-      #   id: deployment
-      #   run: |
-      #     DEPLOY_URL="https://noppomario.github.io/llm-chat/"
-      #     echo "page_url=$DEPLOY_URL" >> $GITHUB_OUTPUT
-      #     echo "Deployment URL: $DEPLOY_URL"
-      #     curl -f $DEPLOY_URL || (echo "Deployment verification failed" && exit 1)
+      - name: Verify deployment
+        id: deployment
+        run: |
+          DEPLOY_URL="https://noppomario.github.io/llm-chat/"
+          echo "page_url=$DEPLOY_URL" >> $GITHUB_OUTPUT
+          echo "Deployment URL: $DEPLOY_URL"
+          curl -f $DEPLOY_URL || (echo "Deployment verification failed" && exit 1)
