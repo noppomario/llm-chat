@@ -8,7 +8,7 @@
 <meta content="LLMチャットボットのドキュメント" name="description"/>
 <meta content="Team" name="author"/>
 <link href="https://noppomario.github.io/llm-chat/" rel="canonical"/>
-<link href="getting_started/" rel="next"/>
+<link href="introduction/getting_started/" rel="next"/>
 <link href="assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.9" name="generator"/>
 <title>LLM Chat Documentation</title>
@@ -30,7 +30,7 @@
 </div>
 <div data-md-component="announce">
 </div>
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
 <nav aria-label="ヘッダー" class="md-header__inner md-grid">
 <a aria-label="LLM Chat Documentation" class="md-header__button md-logo" data-md-component="logo" href="." title="LLM Chat Documentation">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
@@ -112,12 +112,52 @@
 </nav>
 </header>
 <div class="md-container" data-md-component="container">
+<nav aria-label="タブ" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href=".">
+        
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="introduction/getting_started/">
+          
+  
+  導入
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="specifications/prompt_editor_spec/">
+          
+  
+  仕様書
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="api/sample/api/">
+          
+  
+  API
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
 <main class="md-main" data-md-component="main">
 <div class="md-main__inner md-grid">
 <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
-<nav aria-label="ナビゲーション" class="md-nav md-nav--primary" data-md-level="0">
+<nav aria-label="ナビゲーション" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
 <a aria-label="LLM Chat Documentation" class="md-nav__button md-logo" data-md-component="logo" href="." title="LLM Chat Documentation">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
@@ -170,58 +210,12 @@
     </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ドキュメント構成">
-<span class="md-ellipsis">
-      ドキュメント構成
-    </span>
-</a>
-<nav aria-label="ドキュメント構成" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#プロンプトエディタ仕様書">
-<span class="md-ellipsis">
-      プロンプトエディタ仕様書
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#導入ガイド">
-<span class="md-ellipsis">
-      導入ガイド
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#github-pages設定">
-<span class="md-ellipsis">
-      GitHub Pages設定
-    </span>
-</a>
-</li>
 </ul>
 </nav>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#貢献について">
-<span class="md-ellipsis">
-      貢献について
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ライセンス">
-<span class="md-ellipsis">
-      ライセンス
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
 <span class="md-ellipsis">
     導入
     
@@ -235,7 +229,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="getting_started/">
+<a class="md-nav__link" href="introduction/getting_started/">
 <span class="md-ellipsis">
     Getting Started
     
@@ -243,7 +237,7 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="github_pages_setup/">
+<a class="md-nav__link" href="introduction/github_pages_setup/">
 <span class="md-ellipsis">
     GitHub Pages設定ガイド
     
@@ -253,9 +247,9 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
 <span class="md-ellipsis">
     仕様書
     
@@ -279,9 +273,9 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
 <span class="md-ellipsis">
     API
     
@@ -341,52 +335,6 @@
     </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ドキュメント構成">
-<span class="md-ellipsis">
-      ドキュメント構成
-    </span>
-</a>
-<nav aria-label="ドキュメント構成" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#プロンプトエディタ仕様書">
-<span class="md-ellipsis">
-      プロンプトエディタ仕様書
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#導入ガイド">
-<span class="md-ellipsis">
-      導入ガイド
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#github-pages設定">
-<span class="md-ellipsis">
-      GitHub Pages設定
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#貢献について">
-<span class="md-ellipsis">
-      貢献について
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ライセンス">
-<span class="md-ellipsis">
-      ライセンス
-    </span>
-</a>
-</li>
 </ul>
 </nav>
 </div>
@@ -429,40 +377,6 @@
 <li>エラーハンドリング</li>
 <li>デバッグ支援</li>
 </ul>
-<h2 id="ドキュメント構成">ドキュメント構成<a class="headerlink" href="#ドキュメント構成" title="Permanent link">¶</a></h2>
-<h3 id="プロンプトエディタ仕様書"><a href="specifications/prompt_editor_spec/">プロンプトエディタ仕様書</a><a class="headerlink" href="#プロンプトエディタ仕様書" title="Permanent link">¶</a></h3>
-<p>プロンプトテンプレートエディタの詳細な仕様と実装方針についてのドキュメントです。
-以下の内容を含みます：</p>
-<ul>
-<li>機能要件の定義</li>
-<li>システムアーキテクチャ</li>
-<li>実装計画と手順</li>
-</ul>
-<h3 id="導入ガイド"><a href="getting_started/">導入ガイド</a><a class="headerlink" href="#導入ガイド" title="Permanent link">¶</a></h3>
-<p>アプリケーションの導入と基本的な使用方法について説明します：</p>
-<ul>
-<li>環境構築手順</li>
-<li>基本的な操作方法</li>
-<li>よくあるトラブルの解決方法</li>
-</ul>
-<h3 id="github-pages設定"><a href="github_pages_setup/">GitHub Pages設定</a><a class="headerlink" href="#github-pages設定" title="Permanent link">¶</a></h3>
-<p>ドキュメントのホスティングに関する情報を提供します：</p>
-<ul>
-<li>MkDocsによるドキュメント管理</li>
-<li>デプロイの手順</li>
-<li>運用管理のガイドライン</li>
-</ul>
-<h2 id="貢献について">貢献について<a class="headerlink" href="#貢献について" title="Permanent link">¶</a></h2>
-<p>本プロジェクトへの貢献を歓迎します。以下の方法で貢献できます：</p>
-<ul>
-<li>バグ報告や機能リクエスト（Issues）</li>
-<li>コードの改善（Pull Requests）</li>
-<li>ドキュメントの改善</li>
-<li>使用例の共有</li>
-</ul>
-<h2 id="ライセンス">ライセンス<a class="headerlink" href="#ライセンス" title="Permanent link">¶</a></h2>
-<p>このプロジェクトはMITライセンスの下で公開されています。
-詳細については<a href="https://github.com/noppomario/llm-chat/blob/main/LICENSE">LICENSE</a>ファイルを参照してください。</p>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
@@ -490,7 +404,7 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "navigation.expand", "navigation.indexes", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+<script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.path", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
 <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
 <script>document$.subscribe(() => {
             window.update_swagger_ui_iframe_height = function (id) {
