@@ -32,6 +32,9 @@ wheels/
 .DS_Store
 Thumbs.db
 
+# MKDocs
+site/
+
 # その他
 _old/
 

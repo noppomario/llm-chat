@@ -23,7 +23,7 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
   features:
-    - navigation.tabs
+    # - navigation.tabs
     - navigation.sections
     - navigation.expand
     - navigation.indexes
@@ -35,12 +35,15 @@ theme:
     - content.code.copy
 
 nav:
-  - ホーム:
-    - プロジェクト概要: index.md
-    - 導入ガイド: getting_started.md
-    - GitHub Pages設定: github_pages_setup.md
+  - Home: index.md
+  - 導入:
+    - getting_started.md
+    - github_pages_setup.md
   - 仕様書:
-    - プロンプトエディタ: specifications/prompt_editor_spec.md
+    - specifications/prompt_editor_spec.md
+  - API:
+    - api/sample/api.md
+    - api/sample2/api.md
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -55,10 +58,15 @@ markdown_extensions:
   - toc:
       permalink: true
       toc_depth: 3
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
 
 plugins:
   - search:
       lang: ja
+  - swagger-ui-tag
+  - awesome-pages
 
 repo_url: https://github.com/noppomario/llm-chat
 repo_name: noppomario/llm-chat
