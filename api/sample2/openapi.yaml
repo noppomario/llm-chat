@@ -1,0 +1,80 @@
+openapi: 3.1.0
+info:
+  title: サンプルAPI仕様書
+  description: これはMkDocsでのOpenAPI仕様書表示のデモです
+  version: 1.0.0
+servers:
+  - url: https://api.example.com/v1
+    description: 本番環境
+paths:
+  /users:
+    get:
+      summary: ユーザー一覧を取得
+      description: 登録されているユーザーの一覧を取得します
+      parameters:
+        - name: limit
+          in: query
+          description: 1ページあたりの表示件数
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: "山田太郎"
+                        email:
+                          type: string
+                          example: "yamada@example.com"
+    post:
+      summary: 新規ユーザーを作成
+      description: 新しいユーザーを作成します
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - email
+              properties:
+                name:
+                  type: string
+                  example: "山田太郎"
+                email:
+                  type: string
+                  format: email
+                  example: "yamada@example.com"
+      responses:
+        '201':
+          description: 作成成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: "山田太郎"
+                  email:
+                    type: string
+                    example: "yamada@example.com"
