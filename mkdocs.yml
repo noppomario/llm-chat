@@ -23,10 +23,8 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
   features:
-    # - navigation.tabs
-    - navigation.sections
-    - navigation.expand
-    - navigation.indexes
+    - navigation.tabs
+    - navigation.path
     - navigation.top
     - search.highlight
     - search.share
@@ -37,8 +35,8 @@ theme:
 nav:
   - Home: index.md
   - 導入:
-    - getting_started.md
-    - github_pages_setup.md
+    - introduction/getting_started.md
+    - introduction/github_pages_setup.md
   - 仕様書:
     - specifications/prompt_editor_spec.md
   - API:
