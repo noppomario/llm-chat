@@ -1,6 +1,7 @@
 site_name: LLM Chat Documentation
 site_description: LLMチャットボットのドキュメント
 site_author: Team
+site_url: https://noppomario.github.io/llm-chat/
 
 theme:
   name: material
@@ -60,3 +61,7 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/noppomario/llm-chat
+
+repo_url: https://github.com/noppomario/llm-chat
+repo_name: noppomario/llm-chat
+edit_uri: edit/main/docs/
